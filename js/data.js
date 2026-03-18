@@ -69,7 +69,7 @@ export const mockDashboardData = [
   // ⚡ IMPORTANT: total 30 objects hone chahiye
 ];
 
-const mockDashboardData = [
+
   { name: "Thermogenix", revenue: 12000 },
   { name: "Cloud Sigma", revenue: 35000 },
   { name: "Pyro Corp", revenue: 28000 },
@@ -81,8 +81,7 @@ const mockDashboardData = [
   { name: "NextGen AI", revenue: 45000 },
   { name: "DevCore", revenue: 22000 },
   { name: "Extra Corp", revenue: 15000 }
-];
-export const mockDashboardData = [
+
   { name:"Aarav Sharma", email:"aarav@gmail.com", revenue:850, status:"Active", lastLogin:"Today" },
   { name:"Isha Patel", email:"isha@gmail.com", revenue:920, status:"Active", lastLogin:"1 hour ago" },
   { name:"Rohan Mehta", email:"rohan@gmail.com", revenue:780, status:"Pending", lastLogin:"Yesterday" },
@@ -93,4 +92,3 @@ export const mockDashboardData = [
   { name:"Priya Singh", email:"priya@gmail.com", revenue:880, status:"Active", lastLogin:"4 hours ago" },
   { name:"Rahul Jain", email:"rahul@gmail.com", revenue:610, status:"Churned", lastLogin:"5 days ago" },
   { name:"Simran Kaur", email:"simran@gmail.com", revenue:770, status:"Active", lastLogin:"2 days ago" }
-];
