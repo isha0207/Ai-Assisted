@@ -6,12 +6,11 @@ DESIGN SYSTEM
 
 --bg-body:#0f172a;
 --bg-surface:#1e293b;
-
+--bg-card:#1e293b;
 --text-primary:#ffffff;
 --text-secondary:#94a3b8;
-
 --border-color:#334155;
-
+--brand-accent:#38bdf8;
 }
 
 /* ===============================
@@ -30,12 +29,11 @@ body{
 background:var(--bg-body);
 color:var(--text-primary);
 height:100vh;
-
+overflow-x:hidden;
 }
 
-/* ===============================
-APP GRID LAYOUT
-=============================== */
+
+
 
 .app-container{
 
@@ -174,7 +172,7 @@ font-size:28px;
 
 font-weight:600;
 
-margin-bottom:10px;
+margin-bottom:20px;
 
 }
 
@@ -194,33 +192,7 @@ margin-top:30px;
 
 }
 
-.card{
 
-height:140px;
-
-background:var(--bg-surface);
-
-border:1px solid var(--border-color);
-
-border-radius:14px;
-
-padding:20px;
-
-transition:all 0.25s ease;
-
-cursor:pointer;
-
-}
-
-/* CARD HOVER */
-
-.card:hover{
-
-transform:translateY(-6px);
-
-box-shadow:0 10px 25px rgba(0,0,0,0.35);
-
-}
 
 /* ===============================
 SCROLLBAR
@@ -242,8 +214,8 @@ RESPONSIVE
 @media(max-width:768px){
 
 .app-container{
-
-grid-template-columns:1fr;
+  
+  grid-template-columns:1fr;
 
 }
 
@@ -289,13 +261,7 @@ gap:10px;
 transition:all 0.25s ease;
 cursor:pointer;
 }
-.card:hover{
 
-transform:translateY(-6px);
-
-box-shadow:0 10px 25px rgba(0,0,0,0.35);
-
-}
 
 
 /* hover effect */
@@ -343,6 +309,7 @@ h1 {
   background: #1e293b;
   border-radius: 12px;
   overflow: hidden;
+  overflow-x: auto;
   border: 1px solid #334155;
 }
 
@@ -391,4 +358,17 @@ td {
 .churned {
   background: rgba(239,68,68,0.2);
   color: #ef4444;
+}
+
+/* ===============================
+   CHART
+=============================== */
+
+.chart-container{
+  position:relative;
+  height:300px;
+  background:var(--bg-card);
+  border-radius:12px;
+  padding:20px;
+  border:1px solid var(--border-color);
 }
