@@ -34,44 +34,28 @@ function renderTable(data) {
 renderTable(mockDashboardData);
 console.log(mockDashboardData);
 // 🔝 Top 10 Filter
-let revenueChart;
+// 🔝 Top 10 Filter
+const topData = mockDashboardData
+  .sort((a, b) => b.revenue - a.revenue)
+  .slice(0, 10);
 
-function renderChart(dataSet) {
-  const topData = [...dataSet] // ✅ copy banaya (safe)
-    .sort((a, b) => b.revenue - a.revenue)
-    .slice(0, 10);
+// 🎯 Data Mapping
+const labels = topData.map(item => item.name);
+const data = topData.map(item => item.revenue);
 
-  const labels = topData.map(item => item.name);
-  const data = topData.map(item => item.revenue);
+const canvas = document.getElementById('revenueChart');
 
-  const canvas = document.getElementById('revenueChart');
-
-  if (!canvas) {
-    console.error("Canvas not found");
-    return;
-  }
-
+if (canvas) {
   const ctx = canvas.getContext('2d');
 
-  if (revenueChart) {
-    revenueChart.destroy(); // ✅ important
-  }
-
-  revenueChart = new Chart(ctx, {
+  new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: labels, // ✅ dynamic labels
+      labels: ["A","B","C","D","E","F","G","H","I","J"],
       datasets: [{
-        label: "Revenue",
+        label: "Test",
         data: data
       }]
-    },
-    options: {
-      indexAxis: 'y',
-      responsive: true
     }
   });
 }
-
-// 👇 CALL THIS
-renderChart(mockDashboardData);
