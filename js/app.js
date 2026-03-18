@@ -33,3 +33,47 @@ function renderTable(data) {
 
 renderTable(mockDashboardData);
 console.log(mockDashboardData);
+// 🔝 Top 10 Filter
+const topData = mockDashboardData
+  .sort((a, b) => b.revenue - a.revenue)
+  .slice(0, 10);
+
+// 🎯 Data Mapping
+const labels = topData.map(item => item.name);
+const data = topData.map(item => item.revenue);
+
+// 🎨 Get CSS Variable
+const rootStyles = getComputedStyle(document.documentElement);
+const brandColor = rootStyles.getPropertyValue('--brand-accent').trim();
+
+// 📊 Chart Setup
+const ctx = document.getElementById('revenueChart').getContext('2d');
+
+// 🌈 Gradient
+const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+gradient.addColorStop(0, brandColor);
+gradient.addColorStop(1, "rgba(56, 189, 248, 0.2)");
+
+// 🚀 Chart Init
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: labels,
+    datasets: [{
+      data: data,
+      backgroundColor: gradient,
+      borderRadius: 6,
+      barThickness: 20
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+
+    plugins: {
+      legend: { display: false }
+    }
+  }
+});
+
