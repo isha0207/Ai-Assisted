@@ -1,15 +1,4 @@
-export const mockDashboardData = [
-  { name:"Aarav Sharma", email:"aarav@gmail.com", revenue:850, status:"Active", lastLogin:"Today" },
-  { name:"Isha Patel", email:"isha@gmail.com", revenue:920, status:"Active", lastLogin:"1 hour ago" },
-  { name:"Rohan Mehta", email:"rohan@gmail.com", revenue:780, status:"Pending", lastLogin:"Yesterday" },
-  { name:"Neha Verma", email:"neha@gmail.com", revenue:640, status:"Active", lastLogin:"2 days ago" },
-  { name:"Karan Shah", email:"karan@gmail.com", revenue:720, status:"Churned", lastLogin:"3 days ago" },
-  { name:"Ananya Gupta", email:"ananya@gmail.com", revenue:990, status:"Active", lastLogin:"Today" },
-  { name:"Dev Patel", email:"dev@gmail.com", revenue:560, status:"Pending", lastLogin:"Yesterday" },
-  { name:"Priya Singh", email:"priya@gmail.com", revenue:880, status:"Active", lastLogin:"4 hours ago" },
-  { name:"Rahul Jain", email:"rahul@gmail.com", revenue:610, status:"Churned", lastLogin:"5 days ago" },
-  { name:"Simran Kaur", email:"simran@gmail.com", revenue:770, status:"Active", lastLogin:"2 days ago" }
-];
+import { mockDashboardData } from "./data.js";
 
 
 const tableBody = document.getElementById("tableBody");
@@ -45,28 +34,44 @@ function renderTable(data) {
 renderTable(mockDashboardData);
 console.log(mockDashboardData);
 // 🔝 Top 10 Filter
-const topData = mockDashboardData
-  .sort((a, b) => b.revenue - a.revenue)
-  .slice(0, 10);
+let revenueChart;
 
-// 🎯 Data Mapping
-const labels = topData.map(item => item.name);
-const data = topData.map(item => item.revenue);
-const canvas = document.getElementById('revenueChart');
+function renderChart(dataSet) {
+  const topData = [...dataSet] // ✅ copy banaya (safe)
+    .sort((a, b) => b.revenue - a.revenue)
+    .slice(0, 10);
 
-if (canvas) {
+  const labels = topData.map(item => item.name);
+  const data = topData.map(item => item.revenue);
+
+  const canvas = document.getElementById('revenueChart');
+
+  if (!canvas) {
+    console.error("Canvas not found");
+    return;
+  }
+
   const ctx = canvas.getContext('2d');
 
-  new Chart(ctx, {
+  if (revenueChart) {
+    revenueChart.destroy(); // ✅ important
+  }
+
+  revenueChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ["A", "B", "C" , "D" , "E" , "F" , "G" , "H" , "I" , "J"],
+      labels: labels, // ✅ dynamic labels
       datasets: [{
-        label: "Test",
+        label: "Revenue",
         data: data
       }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true
     }
   });
-} else {
-  console.error("Canvas not found");
 }
+
+// 👇 CALL THIS
+renderChart(mockDashboardData);
