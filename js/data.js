@@ -68,3 +68,17 @@ export const mockDashboardData = [
 
   // ⚡ IMPORTANT: total 30 objects hone chahiye
 ];
+
+const mockDashboardData = [
+  { name: "Thermogenix", revenue: 12000 },
+  { name: "Cloud Sigma", revenue: 35000 },
+  { name: "Pyro Corp", revenue: 28000 },
+  { name: "DataNova", revenue: 42000 },
+  { name: "NeoWorks", revenue: 31000 },
+  { name: "AstraTech", revenue: 26000 },
+  { name: "BluePeak", revenue: 18000 },
+  { name: "QuantumSoft", revenue: 39000 },
+  { name: "NextGen AI", revenue: 45000 },
+  { name: "DevCore", revenue: 22000 },
+  { name: "Extra Corp", revenue: 15000 }
+];
