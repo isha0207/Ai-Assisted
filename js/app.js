@@ -41,43 +41,21 @@ const topData = mockDashboardData
 // 🎯 Data Mapping
 const labels = topData.map(item => item.name);
 const data = topData.map(item => item.revenue);
-
-// 🎨 Get CSS Variable
-const rootStyles = getComputedStyle(document.documentElement);
-const brandColor = rootStyles.getPropertyValue('--brand-accent').trim();
-
-// 📊 Chart Setup
 const canvas = document.getElementById('revenueChart');
 
-if (!canvas) {
-  console.error("Canvas not found!");
-} else {
+if (canvas) {
   const ctx = canvas.getContext('2d');
 
-  // 🌈 Gradient
-  const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-  gradient.addColorStop(0, brandColor);
-  gradient.addColorStop(1, "rgba(56, 189, 248, 0.2)");
-
-  // 🚀 Chart Init
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: labels,
+      labels: ["A", "B", "C"],
       datasets: [{
-        data: data,
-        backgroundColor: gradient,
-        borderRadius: 6,
-        barThickness: 20
+        label: "Test",
+        data: [10, 20, 30]
       }]
-    },
-    options: {
-      indexAxis: 'y',
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false }
-      }
     }
   });
+} else {
+  console.error("Canvas not found");
 }
