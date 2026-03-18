@@ -47,33 +47,37 @@ const rootStyles = getComputedStyle(document.documentElement);
 const brandColor = rootStyles.getPropertyValue('--brand-accent').trim();
 
 // 📊 Chart Setup
-const ctx = document.getElementById('revenueChart').getContext('2d');
+const canvas = document.getElementById('revenueChart');
 
-// 🌈 Gradient
-const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-gradient.addColorStop(0, brandColor);
-gradient.addColorStop(1, "rgba(56, 189, 248, 0.2)");
+if (!canvas) {
+  console.error("Canvas not found!");
+} else {
+  const ctx = canvas.getContext('2d');
 
-// 🚀 Chart Init
-new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: labels,
-    datasets: [{
-      data: data,
-      backgroundColor: gradient,
-      borderRadius: 6,
-      barThickness: 20
-    }]
-  },
-  options: {
-    indexAxis: 'y',
-    responsive: true,
-    maintainAspectRatio: false,
+  // 🌈 Gradient
+  const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+  gradient.addColorStop(0, brandColor);
+  gradient.addColorStop(1, "rgba(56, 189, 248, 0.2)");
 
-    plugins: {
-      legend: { display: false }
+  // 🚀 Chart Init
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        data: data,
+        backgroundColor: gradient,
+        borderRadius: 6,
+        barThickness: 20
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false }
+      }
     }
-  }
-});
-
+  });
+}
