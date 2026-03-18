@@ -1,4 +1,8 @@
-import { mockDashboardData } from "./data.js";
+const mockDashboardData = [
+  { name: "A", email:"a@gmail.com", revenue: 100, status:"Active", lastLogin:"Today" },
+  { name: "B", email:"b@gmail.com", revenue: 200, status:"Pending", lastLogin:"Yesterday" },
+  { name: "C", email:"c@gmail.com", revenue: 150, status:"Churned", lastLogin:"2 days ago" }
+];
 
 
 const tableBody = document.getElementById("tableBody");
