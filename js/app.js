@@ -107,6 +107,7 @@ function renderTable(data){
   }).join('');
 
   tbody.innerHTML = rows;
-}
 
-renderTable(mockDashboardData);
+document.addEventListener("DOMContentLoaded", () => {
+  renderTable(mockDashboardData);
+});
