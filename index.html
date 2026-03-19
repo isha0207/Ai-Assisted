@@ -86,29 +86,6 @@
 </div>
 
 </div>
-<section class="dashboard container">
-
-  <h1>Dashboard</h1>
-
-  <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Revenue</th>
-          <th>Status</th>
-          <th>Last Login</th>
-        </tr>
-      </thead>
-
-      <tbody id="tableBody">
-        <!-- JS will inject data here -->
-      </tbody>
-    </table>
-  </div>
-
-</section>
 
   <!-- ✅ CHART (INSIDE MAIN) -->
 <section class="container">
@@ -118,7 +95,22 @@
     <canvas id="revenueChart"></canvas>
   </div>
 </section>
-
+  
+<div class="table-container">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Revenue</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="table-body"></tbody>
+  </table>
+</div>
+  
 </main>
 
 </div>
