@@ -62,7 +62,7 @@ if (canvas) {
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ["A","B","C","D","E","F","G","H","I","J"],
+      labels: labels;
       datasets: [{
         label: "Test",
         data: data
