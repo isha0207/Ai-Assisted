@@ -70,3 +70,43 @@ if (canvas) {
     }
   });
 }
+
+const tbody = document.getElementById("table-body");
+
+// Helper for status class
+function getStatusClass(status){
+  return `status-${status.toLowerCase()}`;
+}
+
+// Currency formatter (USD)
+const formatCurrency = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD"
+});
+
+// Main render function
+function renderTable(data){
+
+  // DOM Hygiene
+  tbody.innerHTML = "";
+
+  const rows = data.map(user => {
+    return `
+      <tr>
+        <td>${user.id}</td>
+        <td>${user.name}</td>
+        <td>${user.email}</td>
+        <td>${formatCurrency.format(user.revenue)}</td>
+        <td>
+          <span class="status ${getStatusClass(user.status)}">
+            ${user.status}
+          </span>
+        </td>
+      </tr>
+    `;
+  }).join('');
+
+  tbody.innerHTML = rows;
+}
+
+renderTable(mockDashboardData);
