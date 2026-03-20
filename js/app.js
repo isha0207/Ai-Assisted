@@ -179,7 +179,8 @@ function updateChartTheme(theme){
 // ================================
 
 document.addEventListener("DOMContentLoaded", () => {
+  initTheme();
   renderTable(originalData);
   initChart();
-  initTheme();
+  
 });
