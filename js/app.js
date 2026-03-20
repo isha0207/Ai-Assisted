@@ -1,7 +1,7 @@
 // ================================
 // 📦 MOCK DATA
 // ================================
-console.log(app.js running");
+console.log("app.js running");
 import { dashboardData } from "./data.js";
 console.log(dashboardData);
 
@@ -13,7 +13,7 @@ const tbody = document.getElementById("table-body");
 const filterDropdown = document.getElementById("status-filter");
 const themeToggleBtn = document.getElementById("theme-toggle");
 
-let originalData = [...mockDashboardData]; // immutable copy
+let originalData = [...DashboardData]; // immutable copy
 
 // ================================
 // 🧩 HELPERS
@@ -66,7 +66,7 @@ function initChart(){
 
   const ctx = canvas.getContext("2d");
 
-  const topData = [...mockDashboardData]
+  const topData = [...dashboardData]
     .sort((a, b) => b.revenue - a.revenue)
     .slice(0, 10);
 
