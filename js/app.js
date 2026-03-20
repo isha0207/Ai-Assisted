@@ -2,7 +2,7 @@
 // 📦 MOCK DATA
 // ================================
 
-const mockDashboardData = [
+export const mockDashboardData = [
   { name:"Aarav Sharma", email:"aarav@gmail.com", revenue:850, status:"Active", lastLogin:"Today" },
   { name:"Isha Patel", email:"isha@gmail.com", revenue:920, status:"Active", lastLogin:"1 hour ago" },
   { name:"Rohan Mehta", email:"rohan@gmail.com", revenue:780, status:"Pending", lastLogin:"Yesterday" },
