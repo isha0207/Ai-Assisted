@@ -1,6 +1,8 @@
 // ================================
 // 📦 IMPORT DATA
 // ================================
+console.log("JS Loaded");
+console.log("Data:", dashboardData);
 console.log("app.js running");
 
 import { dashboardData } from "./data.js";
