@@ -1,9 +1,9 @@
 // ================================
 // 📦 MOCK DATA
 // ================================
-
+console.log(app.js running");
 import { dashboardData } from "./data.js";
-
+console.log(dashboardData);
 
 // ================================
 // 🎯 GLOBAL VARIABLES
