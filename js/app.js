@@ -1,8 +1,10 @@
 // ================================
-// 📦 MOCK DATA
+// 📦 IMPORT DATA
 // ================================
 console.log("app.js running");
+
 import { dashboardData } from "./data.js";
+
 console.log(dashboardData);
 
 // ================================
@@ -13,7 +15,8 @@ const tbody = document.getElementById("table-body");
 const filterDropdown = document.getElementById("status-filter");
 const themeToggleBtn = document.getElementById("theme-toggle");
 
-let originalData = [...DashboardData]; // immutable copy
+// ✅ FIXED (correct variable name)
+let originalData = [...dashboardData];
 
 // ================================
 // 🧩 HELPERS
@@ -41,6 +44,7 @@ function renderTable(data){
 
   const rows = data.map(user => `
     <tr>
+      <td>${user.id}</td>
       <td>${user.name}</td>
       <td>${user.email}</td>
       <td>${formatCurrency.format(user.revenue)}</td>
@@ -49,7 +53,6 @@ function renderTable(data){
           ${user.status}
         </span>
       </td>
-      <td>${user.lastLogin}</td>
     </tr>
   `).join("");
 
@@ -66,6 +69,7 @@ function initChart(){
 
   const ctx = canvas.getContext("2d");
 
+  // ✅ FIXED (correct data source)
   const topData = [...dashboardData]
     .sort((a, b) => b.revenue - a.revenue)
     .slice(0, 10);
@@ -73,14 +77,14 @@ function initChart(){
   const labels = topData.map(item => item.name);
   const revenues = topData.map(item => item.revenue);
 
-  // Save globally for theme updates
   window.revenueChart = new Chart(ctx, {
     type: "bar",
     data: {
       labels,
       datasets: [{
         label: "Revenue",
-        data: revenues
+        data: revenues,
+        borderWidth: 1
       }]
     },
     options: {
@@ -97,7 +101,8 @@ function initChart(){
 function setTheme(theme){
   document.documentElement.setAttribute("data-theme", theme);
   localStorage.setItem("theme", theme);
-   if(typeof updateChartTheme === "function"){
+
+  if(typeof updateChartTheme === "function"){
     updateChartTheme(theme);
   }
 }
@@ -105,7 +110,7 @@ function setTheme(theme){
 function initTheme(){
   const savedTheme = localStorage.getItem("theme");
 
-  if(savedTheme === "light" || savedTheme === "dark"){
+  if(savedTheme){
     setTheme(savedTheme);
   } else {
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -113,7 +118,7 @@ function initTheme(){
   }
 }
 
-// Toggle event
+// Toggle
 if(themeToggleBtn){
   themeToggleBtn.addEventListener("click", () => {
     const currentTheme = document.documentElement.getAttribute("data-theme");
@@ -174,5 +179,4 @@ document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   renderTable(originalData);
   initChart();
-   
 });
