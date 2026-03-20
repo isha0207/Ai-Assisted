@@ -1,4 +1,4 @@
-import { mockDashboardData } from "./data.js";
+import { mockDashboardData } from "js/data.js";
 
 const tableBody = document.getElementById("tableBody");
 
