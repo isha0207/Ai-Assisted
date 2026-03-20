@@ -2,15 +2,25 @@
 DESIGN SYSTEM
 =============================== */
 
+/* ✅ LIGHT MODE (DEFAULT) */
 :root{
+  --bg-body:#f4f5f7;
+  --bg-surface:#ffffff;
+  --bg-card:#ffffff;
+  --text-primary:#111827;
+  --text-secondary:#6b7280;
+  --border-color:#e5e7eb;
+  --brand-accent:#38bdf8;
+}
 
---bg-body:#0f172a;
---bg-surface:#1e293b;
---bg-card:#1e293b;
---text-primary:#ffffff;
---text-secondary:#94a3b8;
---border-color:#334155;
---brand-accent:#38bdf8;
+/* ✅ DARK MODE (OVERRIDE) */
+[data-theme="dark"]{
+  --bg-body:#0f172a;
+  --bg-surface:#1e293b;
+  --bg-card:#1e293b;
+  --text-primary:#f8fafc;
+  --text-secondary:#94a3b8;
+  --border-color:#334155;
 }
 
 /* ===============================
@@ -140,7 +150,7 @@ z-index:100;
 
 .search{
 
-background:#0f172a;
+background:var(--bg-surface);
 
 border:1px solid var(--border-color);
 
@@ -148,7 +158,7 @@ padding:8px 14px;
 
 border-radius:8px;
 
-color:white;
+color:var(--text-primary);
 
 width:220px;
 
@@ -308,11 +318,11 @@ h1 {
 }
 
 .table-wrapper {
-  background: #1e293b;
+  background: var(--bg-surface);
   border-radius: 12px;
   overflow: hidden;
   overflow-x: auto;
-  border: 1px solid #334155;
+  border: 1px solid var(--border-color);
 }
 
 table {
@@ -332,13 +342,11 @@ th, td {
 }
 
 th {
-  color: #94a3b8;
-  font-size: 14px;
+  color: var(--text-secondary);
 }
 
 td {
-  color: #ffffff;
-  border-top: 1px solid #334155;
+ color: var(--text-primary); 
 }
 tr{
   transition: background 0.3s ease;
