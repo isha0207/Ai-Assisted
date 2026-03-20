@@ -356,6 +356,25 @@ tr:hover{
     background: rgba(255,255,255,0.05);
 }
 
+/* ================================
+   TABLE CONTROLS
+================================ */
+
+.table-controls{
+  margin: 20px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#status-filter{
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+@media(max-width:768px){
+  /* responsive */
+}
 
 /* ===============================
    CHART
