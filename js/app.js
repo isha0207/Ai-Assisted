@@ -87,5 +87,91 @@ if (canvas) {
       responsive: true,
       maintainAspectRatio: false
     }
+
+    // ================================
+// THEME MANAGEMENT (DARK MODE)
+// ================================
+
+const themeToggleBtn = document.getElementById("theme-toggle");
+
+// Apply theme
+function setTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("theme", theme);
+
+  updateChartTheme(theme); // Fix Chart.js issue
+}
+
+// Toggle theme
+themeToggleBtn.addEventListener("click", () => {
+  const currentTheme = document.documentElement.getAttribute("data-theme");
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+  setTheme(newTheme);
+});
+
+// Initialize theme
+function initTheme() {
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme) {
+    setTheme(savedTheme);
+  } else {
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setTheme(prefersDark ? "dark" : "light");
+  }
+}
+
+initTheme();
+
+
+// ================================
+// FILTER FUNCTIONALITY
+// ================================
+
+const filterDropdown = document.getElementById("status-filter");
+
+// IMPORTANT: original data (IMMUTABLE)
+let originalData = [...mockDashboardData];
+
+// Filter event
+filterDropdown.addEventListener("change", (e) => {
+  const selectedValue = e.target.value.toLowerCase();
+
+  if (selectedValue === "all") {
+    renderTable(originalData);
+    return;
+  }
+
+  const filteredData = originalData.filter(item =>
+    item.status.toLowerCase() === selectedValue
+  );
+
+  renderTable(filteredData);
+});
+
+
+// ================================
+// CHART.JS THEME FIX (VERY IMPORTANT)
+// ================================
+
+function updateChartTheme(theme) {
+  if (!window.revenueChart) return;
+
+  const isDark = theme === "dark";
+
+  const textColor = isDark ? "#f8fafc" : "#111827";
+  const gridColor = isDark ? "#334155" : "#e5e7eb";
+
+  // Update chart options
+  revenueChart.options.plugins.legend.labels.color = textColor;
+
+  revenueChart.options.scales.x.ticks.color = textColor;
+  revenueChart.options.scales.y.ticks.color = textColor;
+
+  revenueChart.options.scales.x.grid.color = gridColor;
+  revenueChart.options.scales.y.grid.color = gridColor;
+
+  revenueChart.update();
+}
   });
 }
