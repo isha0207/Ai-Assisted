@@ -107,7 +107,9 @@ function initChart(){
 function setTheme(theme){
   document.documentElement.setAttribute("data-theme", theme);
   localStorage.setItem("theme", theme);
-  
+   if(typeof updateChartTheme === "function"){
+    updateChartTheme(theme);
+  }
 }
 
 function initTheme(){
