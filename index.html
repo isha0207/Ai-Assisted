@@ -44,12 +44,17 @@
 <div class="chart-container">
   <canvas id="revenueChart"></canvas>
 </div>
-<div class="table-container">
-  <div class="table-controls">
-  <button class="filter-btn active" data-status="all">All</button>
-  <button class="filter-btn" data-status="Active">Active</button>
-  <button class="filter-btn" data-status="Pending">Pending</button>
-  <button class="filter-btn" data-status="Churned">Churned</button>
+<div class="table-controls">
+  
+  <button id="filter-toggle">Filter ▼</button>
+
+  <div id="filter-box" class="filter-box">
+    <p data-status="all">All</p>
+    <p data-status="Active">Active</p>
+    <p data-status="Pending">Pending</p>
+    <p data-status="Churned">Churned</p>
+  </div>
+
 </div>
   <table class="data-table">
     <thead>
