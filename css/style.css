@@ -320,3 +320,161 @@ button:focus {
     display: none;
   }
 }
+/* ======================
+LAYOUT
+====================== */
+.app-container {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  min-height: 100vh;
+}
+
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ======================
+SIDEBAR
+====================== */
+.sidebar {
+  background: #1e293b;
+  color: white;
+  padding: 20px;
+}
+
+/* ======================
+CARDS
+====================== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.metric-card {
+  background: #1e293b;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* ======================
+MOBILE CARD UI
+====================== */
+.card {
+  background: #1e293b;
+  padding: 15px;
+  border-radius: 12px;
+  margin: 15px 0;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-group {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.btn {
+  padding: 6px 10px;
+  border: none;
+  background: #334155;
+  color: white;
+  border-radius: 6px;
+}
+
+.btn.active {
+  background: #3b82f6;
+}
+
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: #334155;
+  color: white;
+}
+
+/* ======================
+PROGRESS
+====================== */
+.progress-bar {
+  height: 6px;
+  background: #334155;
+  border-radius: 10px;
+}
+
+.progress {
+  width: 40%;
+  height: 100%;
+  background: #3b82f6;
+}
+
+/* ======================
+TABLE FIX (IMPORTANT)
+====================== */
+.table-container {
+  overflow-x: auto;
+}
+
+/* ======================
+BOTTOM NAV (MOBILE)
+====================== */
+.bottom-nav {
+  display: none;
+}
+
+/* ======================
+RESPONSIVE
+====================== */
+@media (max-width: 768px) {
+
+  .app-container {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #1e293b;
+    justify-content: space-around;
+    padding: 10px;
+  }
+
+  .nav-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 12px;
+  }
+
+}
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
