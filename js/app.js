@@ -63,26 +63,31 @@ const revenueChart = new Chart(ctx, {
 const toggleBtn = document.getElementById("filter-toggle");
 const filterBox = document.getElementById("filter-box");
 
+if (toggleBtn && filterBox) {
 
-// Open / Close
-toggleBtn.addEventListener("click", () => {
-  filterBox.classList.toggle("show");
-});
+  const options = filterBox.querySelectorAll("p");
 
-// Select filter
-options.forEach(option => {
-  option.addEventListener("click", () => {
-    const status = option.getAttribute("data-status");
-
-    filterBox.classList.remove("show");
-
-    if (status === "all") {
-      renderTable(mockDashboardData);
-    } else {
-      const filtered = mockDashboardData.filter(user =>
-        user.status.toLowerCase() === status.toLowerCase()
-      );
-      renderTable(filtered);
-    }
+  // Open / Close
+  toggleBtn.addEventListener("click", () => {
+    filterBox.classList.toggle("show");
   });
-});
+
+  // Select filter
+  options.forEach(option => {
+    option.addEventListener("click", () => {
+      const status = option.getAttribute("data-status");
+
+      filterBox.classList.remove("show");
+
+      if (status === "all") {
+        renderTable(mockDashboardData);
+      } else {
+        const filtered = mockDashboardData.filter(user =>
+          user.status.toLowerCase() === status.toLowerCase()
+        );
+        renderTable(filtered);
+      }
+    });
+  });
+
+}
