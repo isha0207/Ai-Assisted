@@ -6,11 +6,12 @@
   <title>SaaS Dashboard</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
 <div class="app-container">
 
-  <!-- SIDEBAR -->
+  <!-- SIDEBAR (Desktop Only) -->
   <aside class="sidebar">
     <h2 class="logo">Analytics</h2>
 
@@ -22,78 +23,109 @@
     </nav>
   </aside>
 
-  <!-- HEADER -->
-  <header class="header">
-    <input type="text" placeholder="Search..." class="search">
-     
-    <div class="user">Isha Mondal</div>
-  </header>
+  <!-- MAIN AREA -->
+  <div class="main-wrapper">
 
-  <!-- MAIN CONTENT -->
-  <main class="main">
-    <h1>Dashboard Overview</h1>
-<div class="cards">
+    <!-- HEADER -->
+    <header class="header">
+      <input type="text" placeholder="Search..." class="search">
+      <div class="user">Isha Mondal</div>
+    </header>
 
-  <div class="metric-card">
-    <p class="metric-title">Total Users</p>
-    <h2 class="metric-value">12,430</h2>
-    <span class="metric-growth">+12% this month</span>
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+      <h1>Dashboard Overview</h1>
+
+      <!-- METRIC CARDS -->
+      <div class="cards">
+        <div class="metric-card">
+          <p>Total Users</p>
+          <h2>12,430</h2>
+        </div>
+
+        <div class="metric-card">
+          <p>Revenue</p>
+          <h2>$8,420</h2>
+        </div>
+
+        <div class="metric-card">
+          <p>Orders</p>
+          <h2>1,284</h2>
+        </div>
+
+        <div class="metric-card">
+          <p>Active Users</p>
+          <h2>3,921</h2>
+        </div>
+      </div>
+
+      <!-- MOBILE STYLE CARD (Sales Overview) -->
+      <section class="card">
+        <div class="flex-between">
+          <h3>Sales Overview</h3>
+          <button class="icon-btn" aria-label="Close">✖</button>
+        </div>
+
+        <div class="filter-group">
+          <button class="btn active">Filter</button>
+          <button class="btn">Status</button>
+          <button class="btn">Month</button>
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress"></div>
+        </div>
+      </section>
+
+      <!-- CHART -->
+      <div class="chart-container">
+        <canvas id="revenueChart"></canvas>
+      </div>
+
+      <!-- TABLE FILTER -->
+      <div class="table-controls">
+        <button id="filter-toggle">Select Status ▼</button>
+
+        <div id="filter-box" class="filter-box">
+          <p data-status="all">All</p>
+          <p data-status="Active">Active</p>
+          <p data-status="Pending">Pending</p>
+          <p data-status="Churned">Churned</p>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>User Name</th>
+              <th>Email</th>
+              <th>Revenue</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+
+    </main>
+
   </div>
-
-  <div class="metric-card">
-    <p class="metric-title">Revenue</p>
-    <h2 class="metric-value">$8,420</h2>
-    <span class="metric-growth">+7% growth</span>
-  </div>
-
-  <div class="metric-card">
-    <p class="metric-title">Orders</p>
-    <h2 class="metric-value">1,284</h2>
-    <span class="metric-growth">+5% increase</span>
-  </div>
-
-  <div class="metric-card">
-    <p class="metric-title">Active Users</p>
-    <h2 class="metric-value">3,921</h2>
-    <span class="metric-growth">+18% engagement</span>
-  </div>
-
 </div>
-   
-    
-<div class="chart-container">
-  <canvas id="revenueChart"></canvas>
-</div>
-<div class="table-controls">
-  
-  
-<button id="filter-toggle">Select Status ▼</button>
-  <div id="filter-box" class="filter-box">
-    <p data-status="all">All</p>
-    <p data-status="Active">Active</p>
-    <p data-status="Pending">Pending</p>
-    <p data-status="Churned">Churned</p>
-  </div>
 
-</div>
-  <table class="data-table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>User Name</th>
-        <th>Email</th>
-        <th>Revenue</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody id="table-body"></tbody>
-  </table>
-</div>
-    
-  </main>
+<!-- MOBILE BOTTOM NAV -->
+<nav class="bottom-nav">
+  <button class="nav-btn active">🏠<span>Dashboard</span></button>
+  <button class="nav-btn">📊<span>Analytics</span></button>
+  <button class="nav-btn">⚙️<span>Settings</span></button>
+  <button class="nav-btn">👤<span>Profile</span></button>
+</nav>
 
-</div>
- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script type="module" src="js/app.js"></script>
+
 </body>
 </html>
