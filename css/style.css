@@ -208,4 +208,10 @@ body {
   background: rgba(239, 68, 68, 0.2);
   color: #ef4444;
 }
-
+#theme-toggle {
+  padding: 8px 12px;
+  background: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
