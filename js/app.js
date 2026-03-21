@@ -194,10 +194,10 @@ options.forEach(option => {
 
     const status = option.getAttribute("data-status");
 
-    // Change button text
-    toggleBtn.textContent = option.textContent + " ▼";
+    // ❌ REMOVE THIS LINE
+    // toggleBtn.textContent = option.textContent + " ▼";
 
-    // Close box
+    // Close dropdown
     filterBox.classList.remove("show");
 
     // Filter logic
@@ -207,7 +207,6 @@ options.forEach(option => {
       const filtered = mockDashboardData.filter(user =>
         user.status.toLowerCase() === status.toLowerCase()
       );
-
       renderTable(filtered);
     }
 
