@@ -141,3 +141,11 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+.chart-container {
+  position: relative;
+  height: 300px;
+  background: var(--bg-surface);
+  padding: 15px;
+  border-radius: 10px;
+}
