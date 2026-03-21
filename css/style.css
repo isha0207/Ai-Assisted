@@ -130,7 +130,33 @@ body {
   border-radius: 10px;
   border: 1px solid var(--border-color);
 }
+/* ===== Metric Cards ===== */
+.metric-card {
+  background: var(--bg-surface);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
 
+.metric-title {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.metric-value {
+  margin: 10px 0;
+  font-size: 24px;
+}
+
+.metric-growth {
+  color: green;
+  font-size: 13px;
+}
+@media (max-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
 /* =========================
    📱 RESPONSIVE
 ========================= */
