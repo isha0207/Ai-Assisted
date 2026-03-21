@@ -222,23 +222,45 @@ body {
   border: none;
   cursor: pointer;
 }
+
 .table-controls {
-  display: flex;
-  gap: 10px;
+  position: relative;
   margin-bottom: 15px;
 }
 
-.filter-btn {
+/* Button */
+#filter-toggle {
   padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 6px;
   border: 1px solid var(--border-color);
   background: var(--bg-surface);
-  cursor: pointer;
-  border-radius: 20px;
-  font-size: 13px;
 }
 
-/* ACTIVE BUTTON */
-.filter-btn.active {
-  background: #3b82f6;
-  color: white;
+/* Hidden box */
+.filter-box {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  width: 120px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Options */
+.filter-box p {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.filter-box p:hover {
+  background: #f3f4f6;
+}
+
+/* Show class */
+.filter-box.show {
+  display: block;
 }
