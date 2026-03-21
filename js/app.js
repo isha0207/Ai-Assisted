@@ -62,7 +62,7 @@ const revenueChart = new Chart(ctx, {
 // ================================
 const toggleBtn = document.getElementById("filter-toggle");
 const filterBox = document.getElementById("filter-box");
-const options = filterBox.querySelectorAll("p");
+
 
 // Open / Close
 toggleBtn.addEventListener("click", () => {
