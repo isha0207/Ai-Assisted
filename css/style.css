@@ -1,10 +1,20 @@
 /* =========================
    🎯 DESIGN SYSTEM (ROOT)
 ========================= */
+/* 🌞 Light Mode (Default) */
 :root {
+  --bg-body: #f4f5f7;
+  --bg-surface: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+}
+
+/* 🌙 Dark Mode Override */
+[data-theme="dark"] {
   --bg-body: #0f172a;
   --bg-surface: #1e293b;
-  --text-primary: #ffffff;
+  --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --border-color: #334155;
 }
