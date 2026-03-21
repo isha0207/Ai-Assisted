@@ -47,7 +47,7 @@ function renderTable(data) {
   });
 }
 
-renderTable(mockDashboardData);
+renderTable(dashboardData);
 
 // Limit data (Top 10 only)
 const topData = mockDashboardData
