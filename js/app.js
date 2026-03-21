@@ -178,3 +178,29 @@ function updateChartTheme() {
 
   revenueChart.update();
 }
+
+const filterButtons = document.querySelectorAll(".filter-btn");
+
+filterButtons.forEach(button => {
+  button.addEventListener("click", () => {
+
+    // ✅ Remove active from all
+    filterButtons.forEach(btn => btn.classList.remove("active"));
+
+    // ✅ Add active to clicked
+    button.classList.add("active");
+
+    const status = button.getAttribute("data-status");
+
+    if (status === "all") {
+      renderTable(mockDashboardData);
+    } else {
+      const filteredData = mockDashboardData.filter(user =>
+        user.status.toLowerCase() === status.toLowerCase()
+      );
+
+      renderTable(filteredData);
+    }
+
+  });
+});
