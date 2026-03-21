@@ -1,12 +1,7 @@
 const mockDashboardData = [
-  {
-    id: "a1f3c9d2-1b2e-4c7a-9f1a-123456789001",
-    name: "Aarav Sharma",
-    email: "aarav.sharma@gmail.com",
-    revenue: 1245.75,
-    status: "Active",
-    lastLogin: "2026-03-20"
-  },
+  { name: "Aarav", email: "a@gmail.com", revenue: 1200, status: "Active" },
+  { name: "Isha", email: "i@gmail.com", revenue: 900, status: "Pending" }
+];
 
 console.log("JS Connected ✅");
 console.log(mockDashboardData);
