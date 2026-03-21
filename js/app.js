@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+  alert("JS Running ✅");
+
+});
+
 console.log("JS Running ✅");
 // ================= DATA =================
 const mockDashboardData = [
