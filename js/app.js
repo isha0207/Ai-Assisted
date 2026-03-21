@@ -92,4 +92,89 @@ function renderTable(data) {
 
 // ✅ INITIAL CALL
 renderTable(mockDashboardData);
+// 🌙 THEME TOGGLE
+const themeToggle = document.getElementById("theme-toggle");
 
+// ✅ Apply saved theme OR system preference
+function initTheme() {
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme) {
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  } else {
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.setAttribute("data-theme", prefersDark ? "dark" : "light");
+  }
+}
+
+// ✅ Toggle Theme
+themeToggle.addEventListener("click", () => {
+  const currentTheme = document.documentElement.getAttribute("data-theme");
+
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+  document.documentElement.setAttribute("data-theme", newTheme);
+  localStorage.setItem("theme", newTheme);
+
+  updateChartTheme(); // 🔥 chart fix
+});
+
+// 🔥 INIT
+initTheme();
+const filterDropdown = document.getElementById("status-filter");
+
+// ✅ FILTER EVENT
+filterDropdown.addEventListener("change", (e) => {
+  const selected = e.target.value;
+
+  if (selected === "all") {
+    renderTable(mockDashboardData);
+  } else {
+    const filteredData = mockDashboardData.filter(user =>
+      user.status.toLowerCase() === selected.toLowerCase()
+    );
+
+    renderTable(filteredData);
+  }
+});
+// Assuming you already created chart as:
+let revenueChart; // 👈 global
+
+function createChart(labels, data) {
+  const ctx = document.getElementById("revenueChart");
+
+  const styles = getComputedStyle(document.documentElement);
+  const textColor = styles.getPropertyValue('--text-primary');
+
+  revenueChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [{
+        label: "Revenue",
+        data,
+        backgroundColor: textColor
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: { ticks: { color: textColor } },
+        y: { ticks: { color: textColor } }
+      }
+    }
+  });
+}
+
+// 🔥 UPDATE ON THEME CHANGE
+function updateChartTheme() {
+  const styles = getComputedStyle(document.documentElement);
+  const textColor = styles.getPropertyValue('--text-primary');
+
+  revenueChart.options.scales.x.ticks.color = textColor;
+  revenueChart.options.scales.y.ticks.color = textColor;
+  revenueChart.data.datasets[0].backgroundColor = textColor;
+
+  revenueChart.update();
+}
