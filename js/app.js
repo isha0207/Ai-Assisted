@@ -91,3 +91,22 @@ if (toggleBtn && filterBox) {
   });
 
 }
+
+const ctx = document.getElementById("revenueChart");
+
+if (ctx) {
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: mockDashboardData.map(u => u.name),
+      datasets: [{
+        label: "Revenue",
+        data: mockDashboardData.map(u => u.revenue)
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false
+    }
+  });
+}
