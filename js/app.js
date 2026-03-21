@@ -1,6 +1,6 @@
-// ================================
-// ✅ MOCK DATA (WORKING)
-// ================================
+console.log("JS Running ✅");
+
+// ================= DATA =================
 const mockDashboardData = [
   { id: "1", name: "Aarav", email: "a@gmail.com", revenue: 1200, status: "Active" },
   { id: "2", name: "Isha", email: "i@gmail.com", revenue: 900, status: "Pending" },
@@ -8,14 +8,12 @@ const mockDashboardData = [
   { id: "4", name: "Neha", email: "n@gmail.com", revenue: 700, status: "Churned" }
 ];
 
-console.log("JS Connected ✅");
-
-// ================================
-// ✅ TABLE RENDER
-// ================================
+// ================= TABLE =================
 const tbody = document.getElementById("table-body");
 
 function renderTable(data) {
+  if (!tbody) return;
+
   tbody.innerHTML = "";
 
   const rows = data.map((user, index) => `
@@ -31,67 +29,9 @@ function renderTable(data) {
   tbody.innerHTML = rows;
 }
 
-// Initial render
 renderTable(mockDashboardData);
 
-// ================================
-// ✅ CHART (Chart.js)
-// ================================
-const ctx = document.getElementById("revenueChart");
-
-const labels = mockDashboardData.map(user => user.name);
-const data = mockDashboardData.map(user => user.revenue);
-
-const revenueChart = new Chart(ctx, {
-  type: "bar",
-  data: {
-    labels: labels,
-    datasets: [{
-      label: "Revenue",
-      data: data
-    }]
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false
-  }
-});
-
-// ================================
-// ✅ FILTER DROPDOWN
-// ================================
-const toggleBtn = document.getElementById("filter-toggle");
-const filterBox = document.getElementById("filter-box");
-
-if (toggleBtn && filterBox) {
-
-  const options = filterBox.querySelectorAll("p");
-
-  // Open / Close
-  toggleBtn.addEventListener("click", () => {
-    filterBox.classList.toggle("show");
-  });
-
-  // Select filter
-  options.forEach(option => {
-    option.addEventListener("click", () => {
-      const status = option.getAttribute("data-status");
-
-      filterBox.classList.remove("show");
-
-      if (status === "all") {
-        renderTable(mockDashboardData);
-      } else {
-        const filtered = mockDashboardData.filter(user =>
-          user.status.toLowerCase() === status.toLowerCase()
-        );
-        renderTable(filtered);
-      }
-    });
-  });
-
-}
-
+// ================= CHART =================
 const ctx = document.getElementById("revenueChart");
 
 if (ctx) {
@@ -108,5 +48,34 @@ if (ctx) {
       responsive: true,
       maintainAspectRatio: false
     }
+  });
+}
+
+// ================= FILTER =================
+const toggleBtn = document.getElementById("filter-toggle");
+const filterBox = document.getElementById("filter-box");
+
+if (toggleBtn && filterBox) {
+  const options = filterBox.querySelectorAll("p");
+
+  toggleBtn.addEventListener("click", () => {
+    filterBox.classList.toggle("show");
+  });
+
+  options.forEach(option => {
+    option.addEventListener("click", () => {
+      const status = option.getAttribute("data-status");
+
+      filterBox.classList.remove("show");
+
+      if (status === "all") {
+        renderTable(mockDashboardData);
+      } else {
+        const filtered = mockDashboardData.filter(user =>
+          user.status.toLowerCase() === status.toLowerCase()
+        );
+        renderTable(filtered);
+      }
+    });
   });
 }
