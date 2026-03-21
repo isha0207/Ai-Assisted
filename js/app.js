@@ -10,7 +10,13 @@ const mockDashboardData = [
   { id: "1", name: "Aarav", email: "a@gmail.com", revenue: 1200, status: "Active" },
   { id: "2", name: "Isha", email: "i@gmail.com", revenue: 900, status: "Pending" },
   { id: "3", name: "Rohan", email: "r@gmail.com", revenue: 1500, status: "Active" },
-  { id: "4", name: "Neha", email: "n@gmail.com", revenue: 700, status: "Churned" }
+  { id: "4", name: "Neha", email: "n@gmail.com", revenue: 700, status: "Churned" },
+  { id: "5", name: "Priya Sharma", email: "priya@gmail.com", revenue: 2100, status: "Active" },
+{ id: "6", name: "Rahul Verma", email: "rahul@gmail.com", revenue: 1750, status: "Pending" },
+{ id: "7", name: "Sneha Kapoor", email: "sneha@gmail.com", revenue: 980, status: "Churned" },
+{ id: "8", name: "Karan Patel", email: "karan@gmail.com", revenue: 2600, status: "Active" },
+{ id: "9", name: "Anjali Mehta", email: "anjali@gmail.com", revenue: 1450, status: "Pending" },
+{ id: "10", name: "Vikram Singh", email: "vikram@gmail.com", revenue: 3200, status: "Active" }
 ];
 
 // ================= TABLE =================
