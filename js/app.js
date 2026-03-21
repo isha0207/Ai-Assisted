@@ -1,5 +1,4 @@
 console.log("JS Running ✅");
-
 // ================= DATA =================
 const mockDashboardData = [
   { id: "1", name: "Aarav", email: "a@gmail.com", revenue: 1200, status: "Active" },
