@@ -179,27 +179,36 @@ function updateChartTheme() {
   revenueChart.update();
 }
 
-const filterButtons = document.querySelectorAll(".filter-btn");
+const toggleBtn = document.getElementById("filter-toggle");
+const filterBox = document.getElementById("filter-box");
+const options = filterBox.querySelectorAll("p");
 
-filterButtons.forEach(button => {
-  button.addEventListener("click", () => {
+// ✅ Open / Close dropdown
+toggleBtn.addEventListener("click", () => {
+  filterBox.classList.toggle("show");
+});
 
-    // ✅ Remove active from all
-    filterButtons.forEach(btn => btn.classList.remove("active"));
+// ✅ Select option
+options.forEach(option => {
+  option.addEventListener("click", () => {
 
-    // ✅ Add active to clicked
-    button.classList.add("active");
+    const status = option.getAttribute("data-status");
 
-    const status = button.getAttribute("data-status");
+    // Change button text
+    toggleBtn.textContent = option.textContent + " ▼";
 
+    // Close box
+    filterBox.classList.remove("show");
+
+    // Filter logic
     if (status === "all") {
       renderTable(mockDashboardData);
     } else {
-      const filteredData = mockDashboardData.filter(user =>
+      const filtered = mockDashboardData.filter(user =>
         user.status.toLowerCase() === status.toLowerCase()
       );
 
-      renderTable(filteredData);
+      renderTable(filtered);
     }
 
   });
