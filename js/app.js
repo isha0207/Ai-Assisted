@@ -1,4 +1,4 @@
-import { mockDashboardData } from "js/app.js/data.js";
+import { mockDashboardData } from "./data.js";
 
 console.log("JS Connected ✅");
 console.log(mockDashboardData);
@@ -52,3 +52,44 @@ new Chart(ctx, {
     }
   }
 });
+import { mockDashboardData } from "./data.js";
+
+const tbody = document.getElementById("table-body");
+
+// ✅ Helper: Status class
+function getStatusClass(status) {
+  return `status-${status.toLowerCase()}`;
+}
+
+// ✅ Currency Formatter
+const formatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD"
+});
+
+// ✅ Render Function
+function renderTable(data) {
+  tbody.innerHTML = ""; // ✅ DOM hygiene
+
+  const rows = data.map(user => {
+    return `
+      <tr>
+        <td>${user.id.slice(0, 6)}</td>
+        <td>${user.name}</td>
+        <td>${user.email}</td>
+        <td>${formatter.format(user.revenue)}</td>
+        <td>
+          <span class="status ${getStatusClass(user.status)}">
+            ${user.status}
+          </span>
+        </td>
+      </tr>
+    `;
+  }).join(""); // ✅ performance optimization
+
+  tbody.innerHTML = rows;
+}
+
+// ✅ INITIAL CALL
+renderTable(mockDashboardData);
+
